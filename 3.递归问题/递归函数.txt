@@ -1,0 +1,180 @@
+#include<stdio.h>
+#include<string.h>
+//递归的主要思考方式在于:把大事化小
+//递归常见错误 栈溢出--Stack overflow
+
+//斐波那契数列
+//1 1 2 3 5 8 13 21 34 55
+
+//描述第n个斐波那契数
+//循环方式速度更快
+int Fib2(int n)
+{
+	int a = 1;
+	int b = 1;
+	int c = 1;
+	
+	while (n>2)
+	{
+		c = a + b;
+		a = b;
+		b = c;
+		n--;
+
+	}
+	return c;
+}
+
+//递归方式速度慢  求的过大时可能存在栈溢出--stack overflow
+int Fib1(int n)
+{
+	if (n <= 2)
+	{
+		return 1;
+	}
+	else
+	{
+		return Fib1(n - 1) + Fib1(n - 2);
+	}
+}
+
+int main()
+{
+	int n = 0;
+	int ret = 0;
+	scanf_s("%d", &n);
+
+	//ret = Fib1(n);
+	//printf("ret=%d\n", ret);
+
+	ret = Fib2(n);
+	printf("ret=%d\n", ret);
+	return 0;
+}
+
+
+
+
+//求n的阶乘
+//int Fac1(int x)
+//{
+//	int i = 0;
+//	int ret = 1;
+//	for (i = 1; i <= x; i++)
+//	{
+//		ret *= i;
+//	}
+//	return ret;
+//}
+////递归方式
+//int Fac2(int x)
+//{
+//	if (x <= 1)
+//	{
+//		return 1;
+//	}
+//	else
+//	{
+//		return x*Fac2(x-1);
+//	}
+//
+//}
+//
+//int main()
+//{
+//	int n = 0;
+//	int ret = 0;
+//	scanf_s("%d", &n);
+//
+//	ret = Fac1(n);
+//	printf("ret=%d\n", ret);
+//
+//	ret = Fac2(n);
+//	printf("ret=%d\n", ret);
+//	return 0;
+//}
+
+
+
+//求字符串长度，不能创建临时变量---递归方法
+//int my_strlen(char* str)
+//{
+//	
+//	if (*str != '\0')
+//	{
+//		return 1 + my_strlen(str+1);
+//	}
+//	else
+//	{
+//		return 0;
+//	}
+//}
+//
+//int main()
+//{
+//	char arr[] = "hello";
+//	//int len = strlen(arr);
+//	//printf("%d\n", len);
+//
+//	int len = my_strlen(arr);//数组元素的第一个地址
+//	printf("%d\n", len);
+//	return 0;
+//}
+
+
+
+////求字符串长度
+//int my_strlen(char* str)
+//{
+//	int count = 0;
+//	while (*str != '\0')
+//	{
+//		count++;
+//		str++;
+//	}
+//	return count;
+//}
+//
+//
+//int main()
+//{
+//	char arr[] = "hello";
+//	//int len = strlen(arr);
+//	//printf("%d\n", len);
+//
+//	int len = my_strlen(arr);
+//	printf("%d\n", len);
+//	return 0;
+//}
+
+
+
+
+
+//输出所输入数字
+//void print(int n)
+//{
+//	if (n > 9)
+//	{
+//		print(n / 10);
+//	}
+//	printf("%d ", n % 10);
+//}
+//
+//
+//int main()
+//{
+//	unsigned int num = 0;
+//	scanf_s("%d", &num);//1234
+//
+//	print(num);
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	printf("hello\n");
+//	main();
+//	return 0;
+//}

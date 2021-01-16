@@ -1,0 +1,27 @@
+#include<stdio.h>
+
+void Move(int n, char A, char B, char C)
+{
+	if (n==1)
+	{
+		printf("%c-->%c\n",A,C);
+	}
+	else
+	{
+		Move(n - 1, A, C, B);//把n-1个盘子由A 移到 B(借助C)
+		printf("%c-->%c\n", A, C);//把第n个盘子由 A直接移到 C
+		Move(n - 1, B, A, C); //把n-1个盘子由B 移到 C（借助A）
+	}
+
+}
+
+int main()
+{
+	int n = 0;
+
+	printf("请输入汉诺塔的盘子数:");
+	scanf_s("%d", &n);
+
+	Move(n, 'A', 'B', 'C');
+	return 0;
+}

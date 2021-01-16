@@ -1,0 +1,48 @@
+#include<stdio.h>
+
+//类比于斐波那契数列1 1 2 3  8 13 21 34 55
+//1 2 3 5 8 13 21 34 55
+int Jump2(int n)
+{
+	int a = 1;
+	int b = 2;
+	int c = n;
+
+	while (n>2)
+	{
+		c = a + b;
+		a = b;
+		b = c;
+		n--;
+
+	}
+	return c;
+}
+
+//递归方式速度慢  求的过大时可能存在栈溢出--stack overflow
+int Jump1(int n)
+{
+	if (n <= 2)
+	{
+		return n;
+	}
+	else
+	{
+		return Jump1(n - 1) + Jump1(n - 2);
+	}
+}
+
+int main()
+{
+	int n = 0;
+	int ret = 0;
+	printf("请输入台阶数:");
+	scanf_s("%d", &n);
+
+	ret = Jump1(n);
+	printf("递归法:有%d种跳法\n", ret);
+
+	ret = Jump2(n);
+	printf("循环法:有%d种跳法\n", ret);
+	return 0;
+}
